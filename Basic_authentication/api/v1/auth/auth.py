@@ -22,9 +22,11 @@ class Auth:
         return True
 
     def authorization_header(self, request=None) -> str:
-        """ Return None, header handling will be added later
+        """ Return the Authorization header value, or None if missing
         """
-        return None
+        if request is None:
+            return None
+        return request.headers.get('Authorization')
 
     def current_user(self, request=None) -> TypeVar('User'):
         """ Return None, user lookup will be added later
